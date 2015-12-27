@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper  
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <!-- 此处必须和接口的类名一致 -->
+<mapper namespace="cn.believeus.service.MyBatisService">  
+    <select id="findById" parameterType="int" resultType="admin">
+    	select * from admin where id=#{id}
+    </select>
+    <select id="findMediaCategoryList" resultType="Map">
+    	select * from (select c2.id,c2.categoryName,c1.categoryName as parentId 
+    	from mediacategory c1,mediacategory c2 where c1.id=c2.parentId ) t where  t.id>1
+    	<if test="pageStart !=null">
+    		limit #{pageStart},#{pageSize}
+    	</if>
+    </select>
+     <select id="findMediaCategoryTree" resultType="Map">
+    	select c1.id,c1.categoryName from mediacategory c1
+    		where c1.parentId=#{parentId}
+    </select>
+</mapper>  

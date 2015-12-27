@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+    PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+	<settings>
+		<setting name="lazyLoadingEnabled" value="false" />
+		<setting name="aggressiveLazyLoading" value="false" />
+		<setting name="lazyLoadingEnabled" value="false" />
+		<setting name="aggressiveLazyLoading" value="true" />
+		<setting name="cacheEnabled" value="false" />
+	</settings>
+	<typeAliases>
+		<!-- 使用包扫描,可以简化返回值 例如可以直接在resultType="admin" 不需要写完全的类名-->
+		<package name="cn.believeus.model"/>
+	</typeAliases>
+	<mappers>
+		<mapper resource="model-mapper-xml/admin-mapper.xml"/>
+	</mappers>
+</configuration>
